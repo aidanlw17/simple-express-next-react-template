@@ -1,3 +1,9 @@
 node_modules/
 
+.next
+.env
+.cache
+
 .DS_Store
+.vscode
+.log
