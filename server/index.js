@@ -2,7 +2,7 @@ const express = require('express');
 const next = require('next');
 const bodyParser = require('body-parser');
 
-import { PORT, dev } from '../config';
+const { PORT, dev } = require('./config');
 
 const nextApp = next({ dev });
 const handle = nextApp.getRequestHandler(); // next config
@@ -14,9 +14,9 @@ nextApp.prepare().then(() => {
 	const app = express();
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({ extended: true }));
-	// require API routes here
 
-	// End require API routes
+	// require API routes here
+	app.use('/api/index', require('./routes/index'));
 
 	// Any routes not yet specified should just be handled by React
 	app.get('*', (req, res) => {
